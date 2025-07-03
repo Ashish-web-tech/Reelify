@@ -15,7 +15,7 @@ export const Hero = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/get-reel", {
+      const response = await fetch("https://reelify-backend-xjn1.onrender.comget-reel", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url }),
