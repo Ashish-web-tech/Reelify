@@ -79,7 +79,7 @@ API_KEY=your_api_key_here
 
 **Ashish Mishra**  
 📧 **[Gmail](mailto:ashishkumar376230@gmail.com)**  
-🔗 **[LinkedIn](https://www.linkedin.com/in/ashish-mishra-59a36325a/)**  
+🔗 **[LinkedIn](https://www.linkedin.com/in/ashishbmishra/)**  
 
 
 
