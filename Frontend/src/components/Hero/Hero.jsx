@@ -5,6 +5,8 @@ export const Hero = () => {
   const [showvideo, setShowvideo] = useState(false);
   const [videoUrl, setVideoUrl] = useState(null);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const fetchVideo = async () => {
     if (!url.includes("instagram.com/reel")) {
@@ -12,19 +14,25 @@ export const Hero = () => {
       return;
     }
 
+    setLoading(true);
+    setButtonDisabled(true);
+    setError("");
+
     try {
-      const response = await fetch("https://reelify-backend-xjn1.onrender.com/get-reel", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url }),
-      });
+      const response = await fetch(
+        "https://reelify-backend-xjn1.onrender.com/get-reel",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url }),
+        }
+      );
 
       const data = await response.json();
 
       if (data?.video_url) {
         setVideoUrl(data.video_url);
         setShowvideo(true);
-        setError("");
       } else {
         setError("No video found or API error");
         setShowvideo(false);
@@ -33,6 +41,8 @@ export const Hero = () => {
       console.error(err);
       setError("Something went wrong");
       setShowvideo(false);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -75,15 +85,47 @@ export const Hero = () => {
           </button>
         </div>
         <button
-          className="active:bg-[var(--red)] border-2 border-[var(--red)] font-semibold text-white w-full md:w-[50%] px-4 py-2 md:py-3 bg-transparent rounded cursor-pointer"
+          disabled={buttonDisabled}
+          className={`border-2 font-semibold text-white w-full md:w-[50%] px-4 py-2 md:py-3 rounded cursor-pointer transition-all duration-200 ${
+            buttonDisabled
+              ? "bg-gray-500 border-gray-500 cursor-not-allowed"
+              : "bg-transparent border-[var(--red)] active:bg-[var(--red)]"
+          }`}
           onClick={fetchVideo}
         >
-          Get Video
+          {loading ? (
+            <span className="flex items-center justify-center gap-2">
+              <svg
+                className="animate-spin h-5 w-5 text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                ></path>
+              </svg>
+              Loading...
+            </span>
+          ) : (
+            "Get Video"
+          )}
         </button>
       </div>
 
       {error && (
-        <p className="relative text-red-500 text-sm mt-1 mb-4 text-center">{error}</p>
+        <p className="relative text-red-500 text-sm mt-1 mb-4 text-center">
+          {error}
+        </p>
       )}
 
       <div
