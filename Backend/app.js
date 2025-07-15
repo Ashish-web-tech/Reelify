@@ -24,7 +24,7 @@ app.post('/get-reel', async (req, res) => {
     headers: {
       'x-rapidapi-key': `${process.env.API_KEY}`,
       'x-rapidapi-host': 'instagram-premium-api-2023.p.rapidapi.com',
-      'x-access-key': 'd8b335de6bmshb47e9e2a524e8e6p14889ajsn92adab51b731'
+      'x-access-key': `${process.env.API_KEY}`
     }
   };
 
