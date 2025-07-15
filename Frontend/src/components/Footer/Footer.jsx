@@ -8,14 +8,12 @@ const Footer = () => {
       <nav>
         <ul className='flex gap-7'>
           <li><a href="/">Home</a></li>
-          <li><a href="/">About</a></li>
-          <li><a href="/">Contact</a></li>
-          <li><a href="/">Policy</a></li>
-          <li><a href="/">Legal</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="https://www.linkedin.com/in/ashishbmishra/">Contact</a></li>
         </ul>
       </nav>
       <div>
-        Made with love by @awt ❤️
+        Made with love by <a href="https://www.linkedin.com/in/ashishbmishra/" className='hover:underline'>@AshishMishra</a> ❤️
       </div>
       </div>
   )

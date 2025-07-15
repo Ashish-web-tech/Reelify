@@ -1,5 +1,3 @@
-import React from "react";
-import { useEffect } from "react";
 import { useState } from "react";
 
 export const Hero = () => {
@@ -39,9 +37,9 @@ export const Hero = () => {
   };
 
   return (
-    <section className="py-10 relative">
+    <section className="py-10">
       {/* background video */}
-      <video
+      {/* <video
         src="/img/bg.mp4"
         className="w-full h-full object-cover absolute top-0 left-0"
         type="video/mp4"
@@ -50,7 +48,7 @@ export const Hero = () => {
         muted
       >
         Your Browser does not support video tags
-      </video>
+      </video> */}
 
       <div className="relative flex flex-col items-center justify-center px-10 lg:px-70 z-10 h-fit">
         <p className="text-white text-3xl font-semibold tracking-tight text-center mb-10 md:text-4xl">
@@ -77,7 +75,7 @@ export const Hero = () => {
           </button>
         </div>
         <button
-          className="active:bg-[var(--red)] border-2 border-[var(--red)] font-semibold text-white w-full md:w-[50%] px-4 py-2 md:py-3 bg-transparent rounded"
+          className="active:bg-[var(--red)] border-2 border-[var(--red)] font-semibold text-white w-full md:w-[50%] px-4 py-2 md:py-3 bg-transparent rounded cursor-pointer"
           onClick={fetchVideo}
         >
           Get Video
